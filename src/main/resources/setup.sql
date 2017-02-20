@@ -10,5 +10,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 commit;
-INSERT INTO `user` (`name`, `age`) VALUES ('Vasia', '30');
+INSERT INTO `user` (`name`, `age`, `isAdmin`) VALUES ('Vasia', '30', 0);
+INSERT INTO `user` (`name`, `age`, `isAdmin`) VALUES ('Fedya', '20', 0);
+INSERT INTO `user` (`name`, `age`, `isAdmin`) VALUES ('Petya', '10', 1);
 commit;
