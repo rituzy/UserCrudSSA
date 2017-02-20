@@ -57,6 +57,7 @@
             <th width="120">name</th>
             <th width="80">age</th>
             <th width="10">isAdmin</th>
+            <th width="80">Date Created</th>
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
@@ -65,7 +66,8 @@
                 <td>${user.id}</td>
                 <td><a href="/userdetails/${user.id}" target="_blank">${user.name}</a></td>
                 <td>${user.age}</td>
-                <td>${user.isAdmin}</td>
+                <td>${user.admin}</td>
+                <td>${user.createdDate}</td>
                 <td><a href="<c:url value='/edit/${user.id}'/>">Edit</a></td>
                 <td><a href="<c:url value='/remove/${user.id}'/>">Delete</a></td>
             </tr>
@@ -115,12 +117,12 @@
         </tr>
         <tr>
             <td>
-                <form:label path="isAdmin">
+                <form:label path="admin">
                     <spring:message text="isAdmin"/>
                 </form:label>
             </td>
             <td>
-                <form:checkbox path="isAdmin"/>
+                <form:checkbox path="admin"/>
             </td>
         </tr>
         <tr>

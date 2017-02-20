@@ -22,7 +22,7 @@ public class User
     private int age;
 
     @Column(name = "isAdmin")
-    private boolean isAdmin;
+    private boolean admin;
 
     @Column(name = "createdDate")
     private Date createdDate = new Date();
@@ -47,9 +47,9 @@ public class User
         return age;
     }
 
-    public boolean getIsAdmin()
+    public boolean isAdmin()
     {
-        return isAdmin;
+        return admin;
     }
 
     public Date getCreatedDate()
@@ -72,10 +72,7 @@ public class User
         this.age = age;
     }
 
-    public void setAdmin(boolean admin)
-    {
-        isAdmin = admin;
-    }
+    public void setAdmin(boolean admin) {this.admin = admin; }
 
     public void setCreatedDate(Date createdDate)
     {
@@ -89,7 +86,7 @@ public class User
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
-                ", isAdmin=" + isAdmin +
+                ", isAdmin=" + admin +
                 ", createdDate=" + createdDate +
                 '}';
     }
