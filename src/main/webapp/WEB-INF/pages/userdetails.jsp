@@ -64,7 +64,7 @@
         <td>${user.id}</td>
         <td><a href="/userdetails/${user.id}" target="_blank">${user.name}</a></td>
         <td>${user.age}</td>
-        <td>${user.isAdmin}</td>
+        <td>${user.admin}</td>
         <td><a href="<c:url value='/edit/${user.id}'/>">Edit</a></td>
         <td><a href="<c:url value='/remove/${user.id}'/>">Delete</a></td>
     </tr>

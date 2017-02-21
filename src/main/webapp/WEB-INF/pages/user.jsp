@@ -5,8 +5,17 @@
 <%@ page session="false" %>
 <html>
 <head>
-    <title>Users Page</title>
+    <!--
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
+    -->
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/jquery.dataTables.min.css" />">
+    <script type="text/javascript" src="<c:url value="/resources/js/jquery-1.12.3.min.js" />"></script>
+    <script type="text/javascript" src="<c:url value="/resources/js/datatables.min.js" />"></script>
 
+    <title>Users Page</title>
+    <script type="text/javascript" src="filename.js" ></script>
     <style type="text/css">
         .tg {
             border-collapse: collapse;
@@ -51,18 +60,21 @@
 <h1>User List</h1>
 
 <c:if test="${!empty listUsers}">
-    <table class="tg">
-        <tr>
-            <th width="60">ID</th>
-            <th width="120">name</th>
-            <th width="80">age</th>
-            <th width="10">isAdmin</th>
-            <th width="80">Date Created</th>
-            <th width="60">Edit</th>
-            <th width="60">Delete</th>
-        </tr>
-        <c:forEach items="${listUsers}" var="user">
+    <table id="users" class="display" width="100%" cellspacing="0">
+        <thead>
             <tr>
+                <th width="60">ID</th>
+                <th width="120">name</th>
+                <th width="80">age</th>
+                <th width="10">isAdmin</th>
+                <th width="80">Date Created</th>
+                <th width="60">Edit</th>
+                <th width="60">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach items="${listUsers}" var="user">
+              <tr>
                 <td>${user.id}</td>
                 <td><a href="/userdetails/${user.id}" target="_blank">${user.name}</a></td>
                 <td>${user.age}</td>
@@ -70,15 +82,21 @@
                 <td>${user.createdDate}</td>
                 <td><a href="<c:url value='/edit/${user.id}'/>">Edit</a></td>
                 <td><a href="<c:url value='/remove/${user.id}'/>">Delete</a></td>
-            </tr>
-        </c:forEach>
+              </tr>
+            </c:forEach>
+        <tbody>
     </table>
+    <script>
+        $(function(){
+            $("#users").dataTable();
+        })
+    </script>
 </c:if>
 
 
 <h1>Add a User</h1>
 
-<c:url var="addAction" value="user/add"/>
+<c:url var="addAction" value="/user/add"/>
 
 <form:form action="${addAction}" modelAttribute="user">
     <table>
@@ -139,5 +157,6 @@
         </tr>
     </table>
 </form:form>
+
 </body>
 </html>
